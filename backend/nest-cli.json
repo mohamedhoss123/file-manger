@@ -4,5 +4,18 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true
-  }
+  },
+  "plugins": [
+    {
+      "name": "@nestjs/swagger/plugin",
+      "options": {
+        "dtoFileNameSuffix": [".entity.ts", ".dto.ts"],
+        "controllerFileNameSuffix": [".controller.ts"],
+        "classValidatorShim": true,
+        "dtoKeyOfComment": "description",
+        "controllerKeyOfComment": "description",
+        "introspectComments": true
+      }
+    }
+  ]
 }
