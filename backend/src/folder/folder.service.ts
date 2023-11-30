@@ -15,6 +15,7 @@ export class FolderService {
   }
 
   private async getFoldersAndFiles(path: string) {
+    console.log(path);
     const folders = [];
     const files = [];
 
@@ -40,7 +41,7 @@ export class FolderService {
   }
 
   async findAll(path: string) {
-    let data = this.getFoldersAndFiles(makePath(path))
+    let data = this.getFoldersAndFiles(makePath(...path.split("/")))
     return data;
   }
 
