@@ -1,8 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseFilters, UseInterceptors, UsePipes, UploadedFile } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseFilters, UseInterceptors, UsePipes, UploadedFile, StreamableFile } from '@nestjs/common';
 import { FileService } from './file.service';
 import { CreateFileDto } from './dto/create-file.dto';
 import { UpdateFileDto } from './dto/update-file.dto';
-import { ApiTags, ApiConsumes, ApiBody, ApiNotFoundResponse, ApiBadRequestResponse, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Express } from 'express';
 import { FileFilter } from './file.filter';
@@ -40,7 +40,8 @@ export class FileController {
 
   @Get(':path')
   findOne(@Param('path') path: string) {
-    return this.fileService.findOne(+path);
+    let stream = this.fileService.findOne(path);
+    return new StreamableFile(stream)
   }
 
   @Patch()

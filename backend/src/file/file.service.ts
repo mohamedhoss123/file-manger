@@ -18,12 +18,9 @@ export class FileService {
     return 'This action adds a new file';
   }
 
-  findAll() {
-    return `This action returns all file`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} file`;
+  findOne(path: string):fs.ReadStream {
+    let stream = fs.createReadStream(makePathToFsRoot(...path.split("/")))
+    return stream;
   }
 
   update(updateFileDto: UpdateFileDto) {
