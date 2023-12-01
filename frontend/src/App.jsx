@@ -22,11 +22,11 @@ function App() {
         </div>
         <hr className="my-4" />
         <div className="group">
-          <div className="border-3 group-hover:border-blue-500 group-hover:text-blue-500 transition-all relative p-5 h-52 rounded-lg border-dotted flex justify-center items-center">
+          <div className="border-3 border-gray-400 group-hover:border-blue-500 group-hover:text-blue-500 transition-all relative p-5 h-52 rounded-lg border-dotted flex justify-center items-center">
             <div className="flex gap-4 items-center">
               <Icon
                 icon={"solar:upload-linear"}
-                className="text-5xl drop-shadow-md text-gray-600 group-hover:text-blue-500"
+                className="text-5xl text-gray-400 group-hover:text-blue-500"
               />
             </div>
             <input
