@@ -15,6 +15,8 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   app.setGlobalPrefix("api")
+  app.enableCors({allowedHeaders:"*"});
+  
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
   await app.listen(3000);

@@ -3,6 +3,7 @@ import { CreateFolderDto } from './dto/create-folder.dto';
 import { UpdateFolderDto } from './dto/update-folder.dto';
 import * as fs from "fs-extra"
 import * as path from "path"
+import { FolderDto } from './dto/folder.dto';
 const fsRoot = path.join(process.cwd(), "fs-root")
 const makePath = (...paths: string[]) => {
   return path.join(fsRoot, ...paths)
@@ -14,8 +15,7 @@ export class FolderService {
     return data
   }
 
-  private async getFoldersAndFiles(path: string) {
-    console.log(path);
+  private async getFoldersAndFiles(path: string): Promise<FolderDto> {
     const folders = [];
     const files = [];
 
@@ -37,10 +37,11 @@ export class FolderService {
       }
     }
 
-    return { folders, files };
+    let result: FolderDto = { folders, files }
+    return result;
   }
 
-  async findAll(path: string) {
+  async findAll(path: string): Promise<FolderDto> {
     let data = this.getFoldersAndFiles(makePath(...path.split("/")))
     return data;
   }

@@ -2,8 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, Validation
 import { FolderService } from './folder.service';
 import { CreateFolderDto } from './dto/create-folder.dto';
 import { UpdateFolderDto } from './dto/update-folder.dto';
-import { ApiTags } from "@nestjs/swagger"
+import { ApiCreatedResponse, ApiResponse, ApiTags } from "@nestjs/swagger"
 import { ZodValidationPipe } from 'nestjs-zod';
+import { FolderDto } from './dto/folder.dto';
 
 
 
@@ -18,8 +19,9 @@ export class FolderController {
     return this.folderService.create(createFolderDto);
   }
 
+  @ApiCreatedResponse({status:200,type:FolderDto})
   @Get(":path")
-  findAll(@Param("path") path:string) {
+  findAll(@Param("path") path:string){
     return this.folderService.findAll(path);
   }
 
