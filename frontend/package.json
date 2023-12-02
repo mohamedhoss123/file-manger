@@ -10,14 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/cairo": "^5.0.17",
     "@iconify/react": "^4.1.1",
     "@nextui-org/react": "^2.2.9",
     "@nextui-org/theme": "^2.1.17",
     "autoprefixer": "^10.4.16",
+    "axios": "^1.6.2",
     "framer-motion": "^10.16.9",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2",
     "tailwindcss": "^3.3.5"
   },
   "devDependencies": {

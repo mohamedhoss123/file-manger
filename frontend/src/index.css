@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Cairo";
+}
+
+.group[data-focus=true] .group-data-\[focus\=true\]\:border-default-foreground {
+  @apply border-blue-500
+}
