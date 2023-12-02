@@ -1,6 +1,5 @@
 import {
   Button,
-  Progress,
   Breadcrumbs,
   BreadcrumbItem,
   Modal,
@@ -37,19 +36,19 @@ function App() {
   };
 
   const [data, setData] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
 
-  useEffect(() => {
-  }, []);
+
 
   function handleFolderSubmit(data) {
-    const fromatedData = JSON.stringify(data)
-    alert(fromatedData)
+    const fromatedData = JSON.stringify(data);
+    alert(fromatedData);
     createFolder(fromatedData).then((res) => console.log(res));
-
   }
 
   return (
     <>
+      <ContextMenu context={context} xYPosistion={xYPosistion} />
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <form
           onSubmit={handleSubmit(handleFolderSubmit)}
@@ -119,7 +118,8 @@ function App() {
                 color="primary"
                 endContent={
                   <Icon icon="solar:upload-bold-duotone" height={25} />
-                }>
+                }
+                onPress={()=> setIsUploading(true)}>
                 رفع
               </Button>
               <Button
@@ -134,8 +134,8 @@ function App() {
           </div>
 
           <hr className="my-4" />
-          <Progress aria-label="Loading..." value={60} className="my-6" />
-          <FileInput />
+          
+          <FileInput isUploading={isUploading} />
         </div>
       </div>
     </>
