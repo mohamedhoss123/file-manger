@@ -40,10 +40,9 @@ function App() {
 
 
 
-  function handleFolderSubmit(data) {
-    const fromatedData = JSON.stringify(data);
-    alert(fromatedData);
-    createFolder(fromatedData).then((res) => console.log(res));
+  async function handleFolderSubmit(data) {
+    let res = await createFolder(data) 
+    console.log(res)
   }
 
   return (
@@ -96,10 +95,10 @@ function App() {
         onContextMenu={showNav}
         onClick={() => setContext(false)}
         className="h-screen">
-        <div className="container mx-auto px-3">
+        <div className="container px-3 mx-auto">
           <br />
 
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <Breadcrumbs>
               <BreadcrumbItem
                 endContent={
